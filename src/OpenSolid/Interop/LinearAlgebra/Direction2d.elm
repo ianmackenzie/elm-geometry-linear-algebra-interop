@@ -7,7 +7,7 @@ module OpenSolid.Interop.LinearAlgebra.Direction2d exposing (toVec2)
 -}
 
 import Math.Vector2 exposing (Vec2)
-import OpenSolid.Geometry.Types exposing (..)
+import OpenSolid.Direction2d as Direction2d exposing (Direction2d)
 
 
 {-| Convert a `Direction2d` to a `Vec2`.
@@ -17,5 +17,5 @@ import OpenSolid.Geometry.Types exposing (..)
 
 -}
 toVec2 : Direction2d -> Vec2
-toVec2 (Direction2d components) =
-    Math.Vector2.fromTuple components
+toVec2 direction =
+    Math.Vector2.fromTuple (Direction2d.components direction)

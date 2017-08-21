@@ -8,8 +8,7 @@ module OpenSolid.Interop.LinearAlgebra.Frame3d exposing (toMat4)
 
 import Math.Matrix4 exposing (Mat4)
 import OpenSolid.Direction3d as Direction3d
-import OpenSolid.Frame3d as Frame3d
-import OpenSolid.Geometry.Types exposing (..)
+import OpenSolid.Frame3d as Frame3d exposing (Frame3d)
 import OpenSolid.Point3d as Point3d
 
 

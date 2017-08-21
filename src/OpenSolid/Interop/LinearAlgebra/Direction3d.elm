@@ -8,7 +8,7 @@ module OpenSolid.Interop.LinearAlgebra.Direction3d exposing (toVec3, toVec4)
 
 import Math.Vector3 exposing (Vec3)
 import Math.Vector4 exposing (Vec4)
-import OpenSolid.Geometry.Types exposing (..)
+import OpenSolid.Direction3d as Direction3d exposing (Direction3d)
 
 
 {-| Convert a `Direction3d` to a `Vec3`.
@@ -18,8 +18,8 @@ import OpenSolid.Geometry.Types exposing (..)
 
 -}
 toVec3 : Direction3d -> Vec3
-toVec3 (Direction3d components) =
-    Math.Vector3.fromTuple components
+toVec3 direction =
+    Math.Vector3.fromTuple (Direction3d.components direction)
 
 
 {-| Convert a `Direction3d` to a `Vec4`. The resulting `Vec4` will have a W
@@ -31,5 +31,9 @@ when performing matrix transformations.
 
 -}
 toVec4 : Direction3d -> Vec4
-toVec4 (Direction3d ( x, y, z )) =
+toVec4 direction =
+    let
+        ( x, y, z ) =
+            Direction3d.components direction
+    in
     Math.Vector4.vec4 x y z 0
