@@ -79,9 +79,12 @@ transformBy matrix point =
 
         ( x, y, z ) =
             Point3d.coordinates point
+
+        w =
+            m41 * x + m42 * y + m43 * z + m44
     in
     Point3d.withCoordinates
-        ( m11 * x + m12 * y + m13 * z + m14
-        , m21 * x + m22 * y + m23 * z + m24
-        , m31 * x + m32 * y + m33 * z + m34
+        ( (m11 * x + m12 * y + m13 * z + m14) / w
+        , (m21 * x + m22 * y + m23 * z + m24) / w
+        , (m31 * x + m32 * y + m33 * z + m34) / w
         )
