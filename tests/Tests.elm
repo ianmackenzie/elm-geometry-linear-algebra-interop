@@ -1,14 +1,13 @@
 module Tests exposing (..)
 
-import Expect
 import Fuzz
 import Math.Matrix4
 import Math.Vector3
+import OpenSolid.Axis3d as Axis3d
 import OpenSolid.Direction2d as Direction2d
 import OpenSolid.Direction3d as Direction3d
 import OpenSolid.Geometry.Expect as Expect
 import OpenSolid.Geometry.Fuzz as Fuzz
-import OpenSolid.Geometry.Types exposing (..)
 import OpenSolid.Interop.LinearAlgebra.Direction2d as Direction2d
 import OpenSolid.Interop.LinearAlgebra.Direction3d as Direction3d
 import OpenSolid.Interop.LinearAlgebra.Frame3d as Frame3d
@@ -184,7 +183,7 @@ point3dRotationMatchesMatrix =
         (\point direction angle ->
             let
                 axis =
-                    Axis3d
+                    Axis3d.with
                         { originPoint = Point3d.origin
                         , direction = direction
                         }
