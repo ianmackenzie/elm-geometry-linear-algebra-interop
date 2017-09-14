@@ -14,7 +14,7 @@ import OpenSolid.Vector3d as Vector3d exposing (Vector3d)
 
 {-| Convert a `Vector3d` to a `Vec3`.
 
-    Vector3d.toVec3 (Vector3d.withComponents ( 2, 1, 3 ))
+    Vector3d.toVec3 (Vector3d.fromComponents ( 2, 1, 3 ))
     --> Vector3.vec3 2 1 3
 
 -}
@@ -27,7 +27,7 @@ toVec3 vector =
 component of 0 so that it [is not affected by translation](http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/)
 when performing matrix transformations.
 
-    Vector3d.toVec4 (Vector3d.withComponents ( 2, 1, 3 ))
+    Vector3d.toVec4 (Vector3d.fromComponents ( 2, 1, 3 ))
     --> vec4 2 1 3 0
 
 -}
@@ -48,7 +48,7 @@ toVec4 vector =
 -}
 fromVec3 : Vec3 -> Vector3d
 fromVec3 vec =
-    Vector3d.withComponents (Math.Vector3.toTuple vec)
+    Vector3d.fromComponents (Math.Vector3.toTuple vec)
 
 
 {-| Transform a `Vector3d` by a `Mat4`; note that
@@ -65,7 +65,7 @@ vector by a 4x4 matrix should in fact ignore any translation component of the
 matrix, which this function does. For example:
 
     vector =
-        Vector3d.withComponents ( 2, 1, 3 )
+        Vector3d.fromComponents ( 2, 1, 3 )
 
     -- 90 degree rotation around the Z axis, followed by a translation
     matrix =
@@ -73,7 +73,7 @@ matrix, which this function does. For example:
             |> Matrix4.rotate (degrees 90) Vector3.k
 
     Vector3d.transformBy matrix vector
-    --> Vector3d.withComponents ( -1, 2, 3 )
+    --> Vector3d.fromComponents ( -1, 2, 3 )
 
 -}
 transformBy : Mat4 -> Vector3d -> Vector3d
@@ -85,7 +85,7 @@ transformBy matrix vector =
         ( x, y, z ) =
             Vector3d.components vector
     in
-    Vector3d.withComponents
+    Vector3d.fromComponents
         ( m11 * x + m12 * y + m13 * z
         , m21 * x + m22 * y + m23 * z
         , m31 * x + m32 * y + m33 * z
