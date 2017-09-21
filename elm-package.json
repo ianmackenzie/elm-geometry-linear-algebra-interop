@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "summary": "Interop support for opensolid/geometry and elm-community/linear-algebra",
     "repository": "https://github.com/opensolid/linear-algebra-interop.git",
     "license": "MPL-2.0",
@@ -16,9 +16,9 @@
         "OpenSolid.Interop.LinearAlgebra.Vector3d"
     ],
     "dependencies": {
-        "opensolid/geometry": "2.0.0 <= v < 3.0.0",
         "elm-community/linear-algebra": "3.1.1 <= v < 4.0.0",
-        "elm-lang/core": "5.1.1 <= v < 6.0.0"
+        "elm-lang/core": "5.1.1 <= v < 6.0.0",
+        "opensolid/geometry": "2.0.0 <= v < 3.0.0"
     },
     "elm-version": "0.18.0 <= v < 0.19.0"
 }
