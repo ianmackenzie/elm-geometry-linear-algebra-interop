@@ -4,8 +4,7 @@
     "repository": "https://github.com/opensolid/linear-algebra-interop.git",
     "license": "MPL-2.0",
     "source-directories": [
-        "src",
-        "../geometry/src"
+        "src"
     ],
     "exposed-modules": [
         "OpenSolid.Interop.LinearAlgebra.Direction2d",
@@ -17,6 +16,7 @@
         "OpenSolid.Interop.LinearAlgebra.Vector3d"
     ],
     "dependencies": {
+        "opensolid/geometry": "2.0.0 <= v < 3.0.0",
         "elm-community/linear-algebra": "3.1.1 <= v < 4.0.0",
         "elm-lang/core": "5.1.1 <= v < 6.0.0"
     },
