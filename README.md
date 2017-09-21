@@ -28,7 +28,7 @@ elm package install opensolid/linear-algebra-interop
 
 ## Documentation
 
-[Full API documentation](http://package.elm-lang.org/packages/opensolid/linear-algebra-interop/1.0.0)
+[Full API documentation](http://package.elm-lang.org/packages/opensolid/linear-algebra-interop/2.0.0)
 is available.
 
 ## Usage details
@@ -37,7 +37,7 @@ The modules in this package are all designed to be imported using `as` to
 'merge' them with the base OpenSolid modules; for example, using
 
 ```elm
-import OpenSolid.Point3d as Point3d
+import OpenSolid.Point3d as Point3d exposing (Point3d)
 import OpenSolid.Interop.LinearAlgebra.Point3d as Point3d
 ```
 
@@ -56,16 +56,18 @@ Point3d.toVec3 Point3d.origin
 Please [open a new issue](https://github.com/opensolid/linear-algebra-interop/issues)
 if you run into a bug, if any documentation is missing/incorrect/confusing, or
 if there's a new feature that you would find useful. For general questions about
-using this package, try posting on:
+using this package, try:
 
-  - [Elm Slack](http://elmlang.herokuapp.com/) (mention @ianmackenzie in your
-    questions so I get a notification)
-  - [Stack Overflow](https://stackoverflow.com/questions/ask?tags=opensolid+elm)
-    (tag your question with 'opensolid' and 'elm')
-  - The [r/elm](https://reddit.com/r/elm) subreddit
-  - The [elm-discuss](https://groups.google.com/forum/#!forum/elm-discuss)
-    Google Group
+  - Sending me (@ianmackenzie) a message on the [Elm Slack](http://elmlang.herokuapp.com/) -
+    even if you don't have any particular questions right now, just come say
+    hello!
+  - Posting to the [r/elm](https://reddit.com/r/elm) subreddit
+  - Posting to the [elm-discuss](https://groups.google.com/forum/#!forum/elm-discuss)
+    Google Group (somewhat less active than Slack and Reddit, but I still follow
+    it regularly if you prefer e-mail)
   - Or if you happen to be in the New York area, come on out to the
     [Elm NYC meetup](https://www.meetup.com/Elm-NYC/) =)
 
+You can also find me on Twitter ([@ianemackenzie](https://twitter.com/ianemackenzie)),
+where I occasionally post OpenSolid-related stuff like demos or new releases.
 Have fun, and don't be afraid to ask for help!
