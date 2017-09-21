@@ -53,11 +53,15 @@ fromVec3 vec =
 
 {-| Transform a `Point3d` by a `Mat4`;
 
-    Point3d.transformBy matrix point
+    point
+        |> Point3d.transformBy matrix
 
 is equivalent to
 
-    Point3d.fromVec3 (Matrix4.transform matrix (Point3d.toVec3 point))
+    point
+        |> Point3d.toVec3
+        |> Matrix4.transform matrix
+        |> Point3d.fromVec3
 
 For example:
 

@@ -53,11 +53,15 @@ fromVec3 vec =
 
 {-| Transform a `Vector3d` by a `Mat4`; note that
 
-    Vector3d.transformBy matrix vector
+    vector
+        |> Vector3d.transformBy matrix
 
 is similar to but _not_ in general equivalent to
 
-    Vector3d.fromVec3 (Matrix4.transform matrix (Vector3d.toVec3 vector))
+    vector
+        |> Vector3d.toVec3
+        |> Matrix4.transform matrix
+        |> Vector3d.fromVec3
 
 since `Matrix4.transform` implicitly assumes that the given argument represents
 a point, not a vector, and therefore applies translation to it. Transforming a
@@ -67,7 +71,8 @@ matrix, which this function does. For example:
     vector =
         Vector3d.fromComponents ( 2, 1, 3 )
 
-    -- 90 degree rotation around the Z axis, followed by a translation
+    -- 90 degree rotation around the Z axis,
+    -- followed by a translation
     matrix =
         Matrix4.makeTranslate3 5 5 5
             |> Matrix4.rotate (degrees 90) Vector3.k

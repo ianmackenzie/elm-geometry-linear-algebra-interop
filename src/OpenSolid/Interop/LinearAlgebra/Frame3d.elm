@@ -44,7 +44,9 @@ and
 
 is equivalent to
 
-    Point3d.transformBy (Matrix4.inverseOrthonormal (Frame3d.toMat4 frame))
+    Point3d.transformBy <|
+        Matrix4.inverseOrthonormal
+            (Frame3d.toMat4 frame)
 
 -}
 toMat4 : Frame3d -> Mat4
