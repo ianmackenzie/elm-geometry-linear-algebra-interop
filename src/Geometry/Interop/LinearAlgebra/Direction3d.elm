@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Direction3d exposing (toVec3, toVec4)
+module Geometry.Interop.LinearAlgebra.Direction3d exposing (toVec3, toVec4)
 
 {-| Conversion functions for `Direction3d`.
 
@@ -6,9 +6,9 @@ module OpenSolid.Interop.LinearAlgebra.Direction3d exposing (toVec3, toVec4)
 
 -}
 
+import Direction3d exposing (Direction3d)
 import Math.Vector3 exposing (Vec3)
 import Math.Vector4 exposing (Vec4)
-import OpenSolid.Direction3d as Direction3d exposing (Direction3d)
 
 
 {-| Convert a `Direction3d` to a `Vec3`.

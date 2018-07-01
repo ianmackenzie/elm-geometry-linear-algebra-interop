@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Direction2d exposing (toVec2)
+module Geometry.Interop.LinearAlgebra.Direction2d exposing (toVec2)
 
 {-| Conversion functions for `Direction2d`.
 
@@ -6,8 +6,8 @@ module OpenSolid.Interop.LinearAlgebra.Direction2d exposing (toVec2)
 
 -}
 
+import Direction2d exposing (Direction2d)
 import Math.Vector2 exposing (Vec2)
-import OpenSolid.Direction2d as Direction2d exposing (Direction2d)
 
 
 {-| Convert a `Direction2d` to a `Vec2`.

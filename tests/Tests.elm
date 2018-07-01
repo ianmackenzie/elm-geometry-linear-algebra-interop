@@ -1,6 +1,13 @@
 module Tests exposing (..)
 
 import Fuzz
+import Geometry.Interop.LinearAlgebra.Direction2d as Direction2d
+import Geometry.Interop.LinearAlgebra.Direction3d as Direction3d
+import Geometry.Interop.LinearAlgebra.Frame3d as Frame3d
+import Geometry.Interop.LinearAlgebra.Point2d as Point2d
+import Geometry.Interop.LinearAlgebra.Point3d as Point3d
+import Geometry.Interop.LinearAlgebra.Vector2d as Vector2d
+import Geometry.Interop.LinearAlgebra.Vector3d as Vector3d
 import Math.Matrix4
 import Math.Vector3
 import OpenSolid.Axis3d as Axis3d
@@ -8,13 +15,6 @@ import OpenSolid.Direction2d as Direction2d
 import OpenSolid.Direction3d as Direction3d
 import OpenSolid.Geometry.Expect as Expect
 import OpenSolid.Geometry.Fuzz as Fuzz
-import OpenSolid.Interop.LinearAlgebra.Direction2d as Direction2d
-import OpenSolid.Interop.LinearAlgebra.Direction3d as Direction3d
-import OpenSolid.Interop.LinearAlgebra.Frame3d as Frame3d
-import OpenSolid.Interop.LinearAlgebra.Point2d as Point2d
-import OpenSolid.Interop.LinearAlgebra.Point3d as Point3d
-import OpenSolid.Interop.LinearAlgebra.Vector2d as Vector2d
-import OpenSolid.Interop.LinearAlgebra.Vector3d as Vector3d
 import OpenSolid.Point3d as Point3d
 import OpenSolid.Vector3d as Vector3d
 import Test exposing (Test)

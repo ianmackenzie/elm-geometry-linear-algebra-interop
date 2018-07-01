@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Point2d exposing (fromVec2, toVec2)
+module Geometry.Interop.LinearAlgebra.Point2d exposing (fromVec2, toVec2)
 
 {-| Conversion functions for `Point2d`.
 
@@ -7,7 +7,7 @@ module OpenSolid.Interop.LinearAlgebra.Point2d exposing (fromVec2, toVec2)
 -}
 
 import Math.Vector2 exposing (Vec2)
-import OpenSolid.Point2d as Point2d exposing (Point2d)
+import Point2d exposing (Point2d)
 
 
 {-| Convert a `Point2d` to a `Vec2`.

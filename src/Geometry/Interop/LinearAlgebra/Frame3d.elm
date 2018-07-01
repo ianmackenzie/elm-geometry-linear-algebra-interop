@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Frame3d exposing (toMat4)
+module Geometry.Interop.LinearAlgebra.Frame3d exposing (toMat4)
 
 {-| Conversion functions for `Frame3d`.
 
@@ -6,10 +6,10 @@ module OpenSolid.Interop.LinearAlgebra.Frame3d exposing (toMat4)
 
 -}
 
+import Direction3d
+import Frame3d exposing (Frame3d)
 import Math.Matrix4 exposing (Mat4)
-import OpenSolid.Direction3d as Direction3d
-import OpenSolid.Frame3d as Frame3d exposing (Frame3d)
-import OpenSolid.Point3d as Point3d
+import Point3d
 
 
 {-| Convert a `Frame3d` to a `Mat4`. The resulting matrix can be thought of in

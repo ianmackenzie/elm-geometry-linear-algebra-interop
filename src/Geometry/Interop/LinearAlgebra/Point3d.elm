@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Point3d exposing (fromVec3, toVec3, toVec4, transformBy)
+module Geometry.Interop.LinearAlgebra.Point3d exposing (fromVec3, toVec3, toVec4, transformBy)
 
 {-| Conversion and transformation functions for `Point3d`.
 
@@ -9,7 +9,7 @@ module OpenSolid.Interop.LinearAlgebra.Point3d exposing (fromVec3, toVec3, toVec
 import Math.Matrix4 exposing (Mat4)
 import Math.Vector3 exposing (Vec3)
 import Math.Vector4 exposing (Vec4)
-import OpenSolid.Point3d as Point3d exposing (Point3d)
+import Point3d exposing (Point3d)
 
 
 {-| Convert a `Point3d` to a `Vec3`.

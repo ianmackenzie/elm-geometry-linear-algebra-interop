@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Vector3d exposing (fromVec3, toVec3, toVec4, transformBy)
+module Geometry.Interop.LinearAlgebra.Vector3d exposing (fromVec3, toVec3, toVec4, transformBy)
 
 {-| Conversion and transformation functions for `Vector3d`.
 
@@ -9,7 +9,7 @@ module OpenSolid.Interop.LinearAlgebra.Vector3d exposing (fromVec3, toVec3, toVe
 import Math.Matrix4 exposing (Mat4)
 import Math.Vector3 exposing (Vec3)
 import Math.Vector4 exposing (Vec4)
-import OpenSolid.Vector3d as Vector3d exposing (Vector3d)
+import Vector3d exposing (Vector3d)
 
 
 {-| Convert a `Vector3d` to a `Vec3`.

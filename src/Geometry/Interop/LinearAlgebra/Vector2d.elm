@@ -1,4 +1,4 @@
-module OpenSolid.Interop.LinearAlgebra.Vector2d exposing (fromVec2, toVec2)
+module Geometry.Interop.LinearAlgebra.Vector2d exposing (fromVec2, toVec2)
 
 {-| Conversion functions for `Vector2d`.
 
@@ -7,7 +7,7 @@ module OpenSolid.Interop.LinearAlgebra.Vector2d exposing (fromVec2, toVec2)
 -}
 
 import Math.Vector2 exposing (Vec2)
-import OpenSolid.Vector2d as Vector2d exposing (Vector2d)
+import Vector2d exposing (Vector2d)
 
 
 {-| Convert a `Vector2d` to a `Vec2`.
