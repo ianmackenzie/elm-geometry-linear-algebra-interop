@@ -1,4 +1,4 @@
-# ianmackenzie/elm-geometry-linear-algebra-interop
+# elm-geometry-linear-algebra-interop
 
 This package supports interop between [`ianmackenzie/elm-geometry`](http://package.elm-lang.org/packages/opensolid/geometry/latest)
 and [`elm-community/linear-algebra`](http://package.elm-lang.org/packages/elm-community/linear-algebra/latest).
