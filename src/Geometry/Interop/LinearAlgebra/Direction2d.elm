@@ -18,4 +18,8 @@ import Math.Vector2 exposing (Vec2)
 -}
 toVec2 : Direction2d -> Vec2
 toVec2 direction =
-    Math.Vector2.fromTuple (Direction2d.components direction)
+    let
+        ( x, y ) =
+            Direction2d.components direction
+    in
+    Math.Vector2.vec2 x y

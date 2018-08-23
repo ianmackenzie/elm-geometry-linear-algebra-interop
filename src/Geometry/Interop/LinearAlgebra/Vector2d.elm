@@ -18,7 +18,11 @@ import Vector2d exposing (Vector2d)
 -}
 toVec2 : Vector2d -> Vec2
 toVec2 vector =
-    Math.Vector2.fromTuple (Vector2d.components vector)
+    let
+        ( x, y ) =
+            Vector2d.components vector
+    in
+    Math.Vector2.vec2 x y
 
 
 {-| Convert a `Vec2` to a `Vector2d`.
@@ -29,4 +33,4 @@ toVec2 vector =
 -}
 fromVec2 : Vec2 -> Vector2d
 fromVec2 vec =
-    Vector2d.fromComponents (Math.Vector2.toTuple vec)
+    Vector2d.fromComponents ( Math.Vector2.getX vec, Math.Vector2.getY vec )

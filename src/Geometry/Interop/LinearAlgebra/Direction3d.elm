@@ -19,7 +19,11 @@ import Math.Vector4 exposing (Vec4)
 -}
 toVec3 : Direction3d -> Vec3
 toVec3 direction =
-    Math.Vector3.fromTuple (Direction3d.components direction)
+    let
+        ( x, y, z ) =
+            Direction3d.components direction
+    in
+    Math.Vector3.vec3 x y z
 
 
 {-| Convert a `Direction3d` to a `Vec4`. The resulting `Vec4` will have a W

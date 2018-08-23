@@ -18,7 +18,11 @@ import Point2d exposing (Point2d)
 -}
 toVec2 : Point2d -> Vec2
 toVec2 point =
-    Math.Vector2.fromTuple (Point2d.coordinates point)
+    let
+        ( x, y ) =
+            Point2d.coordinates point
+    in
+    Math.Vector2.vec2 x y
 
 
 {-| Convert a `Vec2` to a `Point2d`.
@@ -29,4 +33,4 @@ toVec2 point =
 -}
 fromVec2 : Vec2 -> Point2d
 fromVec2 vec =
-    Point2d.fromCoordinates (Math.Vector2.toTuple vec)
+    Point2d.fromCoordinates ( Math.Vector2.getX vec, Math.Vector2.getY vec )

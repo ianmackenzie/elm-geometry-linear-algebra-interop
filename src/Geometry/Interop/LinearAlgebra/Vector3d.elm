@@ -20,7 +20,11 @@ import Vector3d exposing (Vector3d)
 -}
 toVec3 : Vector3d -> Vec3
 toVec3 vector =
-    Math.Vector3.fromTuple (Vector3d.components vector)
+    let
+        ( x, y, z ) =
+            Vector3d.components vector
+    in
+    Math.Vector3.vec3 x y z
 
 
 {-| Convert a `Vector3d` to a `Vec4`. The resulting `Vec4` will have a W
@@ -48,7 +52,11 @@ toVec4 vector =
 -}
 fromVec3 : Vec3 -> Vector3d
 fromVec3 vec =
-    Vector3d.fromComponents (Math.Vector3.toTuple vec)
+    Vector3d.fromComponents
+        ( Math.Vector3.getX vec
+        , Math.Vector3.getY vec
+        , Math.Vector3.getZ vec
+        )
 
 
 {-| Transform a `Vector3d` by a `Mat4`; note that
