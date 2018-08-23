@@ -3,7 +3,7 @@
     "name": "ianmackenzie/elm-geometry-linear-algebra-interop",
     "summary": "Interop support for ianmackenzie/elm-geometry and elm-community/linear-algebra",
     "license": "MPL-2.0",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "exposed-modules": [
         "Geometry.Interop.LinearAlgebra.Direction2d",
         "Geometry.Interop.LinearAlgebra.Direction3d",

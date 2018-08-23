@@ -1,7 +1,7 @@
 # elm-geometry-linear-algebra-interop
 
 This package supports interop between [`ianmackenzie/elm-geometry`](http://package.elm-lang.org/packages/ianmackenzie/elm-geometry/latest)
-and [`elm-community/linear-algebra`](http://package.elm-lang.org/packages/elm-community/linear-algebra/latest).
+and [`elm-explorations/linear-algebra`](http://package.elm-lang.org/packages/elm-explorations/linear-algebra/latest).
 You can:
 
   - Convert `elm-geometry` `Point2d`, `Point3d`, `Vector2d`, `Vector3d`,
@@ -12,23 +12,22 @@ You can:
   - Transform `elm-geometry` `Point3d` and `Vector3d` values using
     `linear-algebra` `Mat4` transformation matrices
 
-This is important for working with WebGL, since the [`elm-community/webgl`](http://package.elm-lang.org/packages/elm-community/webgl/latest)
+This is important for working with WebGL, since the [`elm-explorations/webgl`](http://package.elm-lang.org/packages/elm-explorations/webgl/latest)
 package requires using `linear-algebra` types when defining meshes and shaders.
 This package may also be useful when using other packages that accept or return
-`linear-algebra` types, such as [`mkovacs/quaternion`](http://package.elm-lang.org/packages/mkovacs/quaternion/latest).
-However, you shouldn't need this package for general use - you should be able to
-do most geometric transformations you need (rotations, translations etc.) using
-`elm-geometry` itself.
+`linear-algebra` types. However, you shouldn't need this package for general
+use - you should be able to do most geometric transformations you need
+(rotations, translations etc.) using `elm-geometry` itself.
 
 ## Installation
 
 ```
-elm package install ianmackenzie/elm-geometry-linear-algebra-interop
+elm install ianmackenzie/elm-geometry-linear-algebra-interop
 ```
 
 ## Documentation
 
-[Full API documentation](http://package.elm-lang.org/packages/ianmackenzie/elm-geometry-linear-algebra-interop/1.0.0)
+[Full API documentation](http://package.elm-lang.org/packages/ianmackenzie/elm-geometry-linear-algebra-interop/1.0.2)
 is available.
 
 ## Usage details
