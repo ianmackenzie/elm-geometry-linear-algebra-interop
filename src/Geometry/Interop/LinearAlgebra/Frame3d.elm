@@ -22,7 +22,7 @@ a couple of ways:
 
 The first bullet implies that something like
 
-    Frame3d.xyz
+    Frame3d.atOrigin
         |> Frame3d.translateBy displacement
         |> Frame3d.rotateAround axis angle
         |> Frame3d.mirrorAcross plane
