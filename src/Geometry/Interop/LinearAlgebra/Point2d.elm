@@ -1,4 +1,4 @@
-module Geometry.Interop.LinearAlgebra.Point2d exposing (fromVec2, toVec2)
+module Geometry.Interop.LinearAlgebra.Point2d exposing (toVec2, fromVec2)
 
 {-| Conversion functions for `Point2d`.
 
@@ -16,10 +16,10 @@ import Point2d exposing (Point2d)
     --> vec2 2 3
 
 -}
-toVec2 : Point2d -> Vec2
+toVec2 : Point2d units coordinates -> Vec2
 toVec2 point =
     let
-        ( x, y ) =
+        { x, y } =
             Point2d.coordinates point
     in
     Math.Vector2.vec2 x y
@@ -31,6 +31,6 @@ toVec2 point =
     --> Point2d.fromCoordinates ( 2, 3 )
 
 -}
-fromVec2 : Vec2 -> Point2d
+fromVec2 : Vec2 -> Point2d units coordinates
 fromVec2 vec =
-    Point2d.fromCoordinates ( Math.Vector2.getX vec, Math.Vector2.getY vec )
+    Point2d.unsafe { x = Math.Vector2.getX vec, y = Math.Vector2.getY vec }

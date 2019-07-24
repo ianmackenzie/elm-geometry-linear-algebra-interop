@@ -16,10 +16,10 @@ import Math.Vector2 exposing (Vec2)
     --> vec2 1 0
 
 -}
-toVec2 : Direction2d -> Vec2
+toVec2 : Direction2d coordinates -> Vec2
 toVec2 direction =
     let
-        ( x, y ) =
-            Direction2d.components direction
+        { x, y } =
+            Direction2d.toRecord direction
     in
     Math.Vector2.vec2 x y

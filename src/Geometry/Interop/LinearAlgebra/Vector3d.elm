@@ -1,4 +1,4 @@
-module Geometry.Interop.LinearAlgebra.Vector3d exposing (fromVec3, toVec3, toVec4, transformBy)
+module Geometry.Interop.LinearAlgebra.Vector3d exposing (toVec3, toVec4, fromVec3, transformBy)
 
 {-| Conversion and transformation functions for `Vector3d`.
 
@@ -18,11 +18,11 @@ import Vector3d exposing (Vector3d)
     --> Vector3.vec3 2 1 3
 
 -}
-toVec3 : Vector3d -> Vec3
+toVec3 : Vector3d units coordinates -> Vec3
 toVec3 vector =
     let
-        ( x, y, z ) =
-            Vector3d.components vector
+        { x, y, z } =
+            Vector3d.unwrap vector
     in
     Math.Vector3.vec3 x y z
 
@@ -38,8 +38,8 @@ when performing matrix transformations.
 toVec4 : Vector3d -> Vec4
 toVec4 vector =
     let
-        ( x, y, z ) =
-            Vector3d.components vector
+        { x, y, z } =
+            Vector3d.unwrap vector
     in
     Math.Vector4.vec4 x y z 0
 
@@ -52,11 +52,11 @@ toVec4 vector =
 -}
 fromVec3 : Vec3 -> Vector3d
 fromVec3 vec =
-    Vector3d.fromComponents
-        ( Math.Vector3.getX vec
-        , Math.Vector3.getY vec
-        , Math.Vector3.getZ vec
-        )
+    Vector3d.unsafe
+        { x = Math.Vector3.getX vec
+        , y = Math.Vector3.getY vec
+        , z = Math.Vector3.getZ vec
+        }
 
 
 {-| Transform a `Vector3d` by a `Mat4`; note that
@@ -95,11 +95,11 @@ transformBy matrix vector =
         { m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44 } =
             Math.Matrix4.toRecord matrix
 
-        ( x, y, z ) =
-            Vector3d.components vector
+        { x, y, z } =
+            Vector3d.unwrap vector
     in
-    Vector3d.fromComponents
-        ( m11 * x + m12 * y + m13 * z
-        , m21 * x + m22 * y + m23 * z
-        , m31 * x + m32 * y + m33 * z
-        )
+    Vector3d.unsafe
+        { x = m11 * x + m12 * y + m13 * z
+        , y = m21 * x + m22 * y + m23 * z
+        , z = m31 * x + m32 * y + m33 * z
+        }

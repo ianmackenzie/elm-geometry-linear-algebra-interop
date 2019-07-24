@@ -17,11 +17,11 @@ import Math.Vector4 exposing (Vec4)
     --> vec3 0 1 0
 
 -}
-toVec3 : Direction3d -> Vec3
+toVec3 : Direction3d coordinates -> Vec3
 toVec3 direction =
     let
-        ( x, y, z ) =
-            Direction3d.components direction
+        { x, y, z } =
+            Direction3d.toRecord direction
     in
     Math.Vector3.vec3 x y z
 
@@ -34,10 +34,10 @@ when performing matrix transformations.
     --> vec4 0 1 0 0
 
 -}
-toVec4 : Direction3d -> Vec4
+toVec4 : Direction3d coordinates -> Vec4
 toVec4 direction =
     let
-        ( x, y, z ) =
-            Direction3d.components direction
+        { x, y, z } =
+            Direction3d.toRecord direction
     in
     Math.Vector4.vec4 x y z 0

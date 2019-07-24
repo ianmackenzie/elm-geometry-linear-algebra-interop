@@ -1,4 +1,4 @@
-module Geometry.Interop.LinearAlgebra.Point3d exposing (fromVec3, toVec3, toVec4, transformBy)
+module Geometry.Interop.LinearAlgebra.Point3d exposing (toVec3, toVec4, fromVec3, transformBy)
 
 {-| Conversion and transformation functions for `Point3d`.
 
@@ -18,11 +18,11 @@ import Point3d exposing (Point3d)
     --> Vector3.vec3 2 1 3
 
 -}
-toVec3 : Point3d -> Vec3
+toVec3 : Point3d units coordinates -> Vec3
 toVec3 point =
     let
-        ( x, y, z ) =
-            Point3d.coordinates point
+        { x, y, z } =
+            Point3d.unwrap point
     in
     Math.Vector3.vec3 x y z
 
@@ -35,11 +35,11 @@ when performing matrix transformations.
     --> vec4 2 1 3 1
 
 -}
-toVec4 : Point3d -> Vec4
+toVec4 : Point3d units coordinates -> Vec4
 toVec4 point =
     let
-        ( x, y, z ) =
-            Point3d.coordinates point
+        { x, y, z } =
+            Point3d.unwrap point
     in
     Math.Vector4.vec4 x y z 1
 
@@ -50,13 +50,13 @@ toVec4 point =
     --> Point3d.fromCoordinates ( 2, 1, 3 )
 
 -}
-fromVec3 : Vec3 -> Point3d
+fromVec3 : Vec3 -> Point3d units coordinates
 fromVec3 vec =
-    Point3d.fromCoordinates
-        ( Math.Vector3.getX vec
-        , Math.Vector3.getY vec
-        , Math.Vector3.getZ vec
-        )
+    Point3d.unsafe
+        { x = Math.Vector3.getX vec
+        , y = Math.Vector3.getY vec
+        , z = Math.Vector3.getZ vec
+        }
 
 
 {-| Transform a `Point3d` by a `Mat4`;
@@ -83,20 +83,20 @@ For example:
     --> Point3d.fromCoordinates ( 5, 5, 8 )
 
 -}
-transformBy : Mat4 -> Point3d -> Point3d
+transformBy : Mat4 -> Point3d units coordinates -> Point3d units coordinates
 transformBy matrix point =
     let
         { m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44 } =
             Math.Matrix4.toRecord matrix
 
-        ( x, y, z ) =
-            Point3d.coordinates point
+        { x, y, z } =
+            Point3d.unwrap point
 
         w =
             m41 * x + m42 * y + m43 * z + m44
     in
-    Point3d.fromCoordinates
-        ( (m11 * x + m12 * y + m13 * z + m14) / w
-        , (m21 * x + m22 * y + m23 * z + m24) / w
-        , (m31 * x + m32 * y + m33 * z + m34) / w
-        )
+    Point3d.unsafe
+        { x = (m11 * x + m12 * y + m13 * z + m14) / w
+        , y = (m21 * x + m22 * y + m23 * z + m24) / w
+        , z = (m31 * x + m32 * y + m33 * z + m34) / w
+        }

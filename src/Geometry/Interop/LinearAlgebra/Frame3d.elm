@@ -49,36 +49,36 @@ is equivalent to
             (Frame3d.toMat4 frame)
 
 -}
-toMat4 : Frame3d -> Mat4
+toMat4 : Frame3d units coordinates defines -> Mat4
 toMat4 frame =
     let
-        ( m11, m21, m31 ) =
-            Direction3d.components (Frame3d.xDirection frame)
+        i =
+            Direction3d.toRecord (Frame3d.xDirection frame)
 
-        ( m12, m22, m32 ) =
-            Direction3d.components (Frame3d.yDirection frame)
+        j =
+            Direction3d.toRecord (Frame3d.yDirection frame)
 
-        ( m13, m23, m33 ) =
-            Direction3d.components (Frame3d.zDirection frame)
+        k =
+            Direction3d.toRecord (Frame3d.zDirection frame)
 
-        ( m14, m24, m34 ) =
-            Point3d.coordinates (Frame3d.originPoint frame)
+        p =
+            Point3d.unwrap (Frame3d.originPoint frame)
     in
     Math.Matrix4.fromRecord
-        { m11 = m11
-        , m21 = m21
-        , m31 = m31
+        { m11 = i.x
+        , m21 = i.y
+        , m31 = i.z
         , m41 = 0
-        , m12 = m12
-        , m22 = m22
-        , m32 = m32
+        , m12 = j.x
+        , m22 = j.y
+        , m32 = j.z
         , m42 = 0
-        , m13 = m13
-        , m23 = m23
-        , m33 = m33
+        , m13 = k.x
+        , m23 = k.y
+        , m33 = k.z
         , m43 = 0
-        , m14 = m14
-        , m24 = m24
-        , m34 = m34
+        , m14 = p.x
+        , m24 = p.y
+        , m34 = p.z
         , m44 = 1
         }
