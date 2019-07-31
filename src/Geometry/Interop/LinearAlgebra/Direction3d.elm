@@ -21,7 +21,7 @@ toVec3 : Direction3d coordinates -> Vec3
 toVec3 direction =
     let
         { x, y, z } =
-            Direction3d.toRecord direction
+            Direction3d.unwrap direction
     in
     Math.Vector3.vec3 x y z
 
@@ -38,6 +38,6 @@ toVec4 : Direction3d coordinates -> Vec4
 toVec4 direction =
     let
         { x, y, z } =
-            Direction3d.toRecord direction
+            Direction3d.unwrap direction
     in
     Math.Vector4.vec4 x y z 0

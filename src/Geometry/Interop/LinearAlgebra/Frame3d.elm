@@ -53,13 +53,13 @@ toMat4 : Frame3d units coordinates defines -> Mat4
 toMat4 frame =
     let
         i =
-            Direction3d.toRecord (Frame3d.xDirection frame)
+            Direction3d.unwrap (Frame3d.xDirection frame)
 
         j =
-            Direction3d.toRecord (Frame3d.yDirection frame)
+            Direction3d.unwrap (Frame3d.yDirection frame)
 
         k =
-            Direction3d.toRecord (Frame3d.zDirection frame)
+            Direction3d.unwrap (Frame3d.zDirection frame)
 
         p =
             Point3d.unwrap (Frame3d.originPoint frame)

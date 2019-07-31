@@ -20,6 +20,6 @@ toVec2 : Direction2d coordinates -> Vec2
 toVec2 direction =
     let
         { x, y } =
-            Direction2d.toRecord direction
+            Direction2d.unwrap direction
     in
     Math.Vector2.vec2 x y
