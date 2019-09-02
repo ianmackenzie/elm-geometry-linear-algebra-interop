@@ -35,7 +35,7 @@ when performing matrix transformations.
     --> vec4 2 1 3 0
 
 -}
-toVec4 : Vector3d -> Vec4
+toVec4 : Vector3d units coordinates -> Vec4
 toVec4 vector =
     let
         { x, y, z } =
@@ -50,7 +50,7 @@ toVec4 vector =
     --> Vector3d ( 2, 1, 3 )
 
 -}
-fromVec3 : Vec3 -> Vector3d
+fromVec3 : Vec3 -> Vector3d units coordinates
 fromVec3 vec =
     Vector3d.unsafe
         { x = Math.Vector3.getX vec
@@ -89,7 +89,7 @@ matrix, which this function does. For example:
     --> Vector3d.fromComponents ( -1, 2, 3 )
 
 -}
-transformBy : Mat4 -> Vector3d -> Vector3d
+transformBy : Mat4 -> Vector3d units coordinates -> Vector3d units coordinates
 transformBy matrix vector =
     let
         { m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44 } =
