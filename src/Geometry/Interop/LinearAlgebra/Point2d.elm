@@ -20,7 +20,7 @@ toVec2 : Point2d units coordinates -> Vec2
 toVec2 point =
     let
         { x, y } =
-            Point2d.coordinates point
+            Point2d.unwrap point
     in
     Math.Vector2.vec2 x y
 
