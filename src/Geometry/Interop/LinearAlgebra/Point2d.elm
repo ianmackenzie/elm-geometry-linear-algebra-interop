@@ -12,7 +12,7 @@ import Point2d exposing (Point2d)
 
 {-| Convert a `Point2d` to a `Vec2`.
 
-    Point2d.toVec2 (Point2d.fromCoordinates ( 2, 3 ))
+    Point2d.toVec2 (Point2d.meters 2 3)
     --> vec2 2 3
 
 -}
@@ -28,7 +28,7 @@ toVec2 point =
 {-| Convert a `Vec2` to a `Point2d`.
 
     Point2d.fromVec2 (vec2 2 3)
-    --> Point2d.fromCoordinates ( 2, 3 )
+    --> Point2d.unsafe { x = 2, y = 3 }
 
 -}
 fromVec2 : Vec2 -> Point2d units coordinates

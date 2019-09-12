@@ -14,7 +14,7 @@ import Vector3d exposing (Vector3d)
 
 {-| Convert a `Vector3d` to a `Vec3`.
 
-    Vector3d.toVec3 (Vector3d.fromComponents ( 2, 1, 3 ))
+    Vector3d.toVec3 (Vector3d.meters 2 1 3)
     --> Vector3.vec3 2 1 3
 
 -}
@@ -31,7 +31,7 @@ toVec3 vector =
 component of 0 so that it [is not affected by translation](http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/)
 when performing matrix transformations.
 
-    Vector3d.toVec4 (Vector3d.fromComponents ( 2, 1, 3 ))
+    Vector3d.toVec4 (Vector3d.meters 2 1 3)
     --> vec4 2 1 3 0
 
 -}
@@ -47,7 +47,7 @@ toVec4 vector =
 {-| Convert a `Vec3` to a `Vector3d`.
 
     Vector3d.fromVec3 (Vector3.vec3 2 1 3)
-    --> Vector3d ( 2, 1, 3 )
+    --> Vector3d.unsafe { x = 2, y = 1, z = 3 }
 
 -}
 fromVec3 : Vec3 -> Vector3d units coordinates
@@ -77,7 +77,7 @@ vector by a 4x4 matrix should in fact ignore any translation component of the
 matrix, which this function does. For example:
 
     vector =
-        Vector3d.fromComponents ( 2, 1, 3 )
+        Vector3d.meters 2 1 3
 
     -- 90 degree rotation around the Z axis,
     -- followed by a translation
@@ -86,10 +86,10 @@ matrix, which this function does. For example:
             |> Matrix4.rotate (degrees 90) Vector3.k
 
     Vector3d.transformBy matrix vector
-    --> Vector3d.fromComponents ( -1, 2, 3 )
+    --> Vector3d.meters -1 2 3
 
 -}
-transformBy : Mat4 -> Vector3d units coordinates -> Vector3d units coordinates
+transformBy : Mat4 -> Vector3d units1 coordinates1 -> Vector3d units2 coordinates2
 transformBy matrix vector =
     let
         { m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44 } =

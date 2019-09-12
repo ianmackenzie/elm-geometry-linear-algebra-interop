@@ -14,7 +14,7 @@ import Point3d exposing (Point3d)
 
 {-| Convert a `Point3d` to a `Vec3`.
 
-    Point3d.toVec3 (Point3d.fromCoordinates ( 2, 1, 3 ))
+    Point3d.toVec3 (Point3d.meters 2 1 3)
     --> Vector3.vec3 2 1 3
 
 -}
@@ -31,7 +31,7 @@ toVec3 point =
 component of 1 so that it [is affected by translation](http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/)
 when performing matrix transformations.
 
-    Point3d.toVec4 (Point3d.fromCoordinates ( 2, 1, 3 ))
+    Point3d.toVec4 (Point3d.meters 2 1 3)
     --> vec4 2 1 3 1
 
 -}
@@ -47,7 +47,7 @@ toVec4 point =
 {-| Convert a `Vec3` to a `Point3d`.
 
     Point3d.fromVec3 (vec3 2 1 3)
-    --> Point3d.fromCoordinates ( 2, 1, 3 )
+    --> Point3d.unsafe { x = 2, y = 1, z = 3 }
 
 -}
 fromVec3 : Vec3 -> Point3d units coordinates
@@ -74,16 +74,16 @@ is equivalent to
 For example:
 
     point =
-        Point3d.fromCoordinates ( 2, 1, 3 )
+        Point3d.meters 2 1 3
 
     matrix =
         Matrix4.makeTranslate3 3 4 5
 
     Point3d.transformBy matrix point
-    --> Point3d.fromCoordinates ( 5, 5, 8 )
+    --> Point3d.meters 5 5 8
 
 -}
-transformBy : Mat4 -> Point3d units coordinates -> Point3d units coordinates
+transformBy : Mat4 -> Point3d units1 coordinates1 -> Point3d units2 coordinates2
 transformBy matrix point =
     let
         { m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44 } =
