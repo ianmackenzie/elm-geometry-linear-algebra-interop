@@ -18,8 +18,4 @@ import Math.Vector2 exposing (Vec2)
 -}
 toVec2 : Direction2d coordinates -> Vec2
 toVec2 direction =
-    let
-        { x, y } =
-            Direction2d.unwrap direction
-    in
-    Math.Vector2.vec2 x y
+    Math.Vector2.fromRecord (Direction2d.unwrap direction)

@@ -18,11 +18,7 @@ import Vector2d exposing (Vector2d)
 -}
 toVec2 : Vector2d units coordinates -> Vec2
 toVec2 vector =
-    let
-        { x, y } =
-            Vector2d.unwrap vector
-    in
-    Math.Vector2.vec2 x y
+    Math.Vector2.fromRecord (Vector2d.unwrap vector)
 
 
 {-| Convert a `Vec2` to a `Vector2d`.
@@ -33,4 +29,4 @@ toVec2 vector =
 -}
 fromVec2 : Vec2 -> Vector2d units coordinates
 fromVec2 vec =
-    Vector2d.unsafe { x = Math.Vector2.getX vec, y = Math.Vector2.getY vec }
+    Vector2d.unsafe (Math.Vector2.toRecord vec)

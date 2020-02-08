@@ -20,11 +20,7 @@ import Point3d exposing (Point3d)
 -}
 toVec3 : Point3d units coordinates -> Vec3
 toVec3 point =
-    let
-        { x, y, z } =
-            Point3d.unwrap point
-    in
-    Math.Vector3.vec3 x y z
+    Math.Vector3.fromRecord (Point3d.unwrap point)
 
 
 {-| Convert a `Point3d` to a `Vec4`. The resulting `Vec4` will have a W
@@ -52,11 +48,7 @@ toVec4 point =
 -}
 fromVec3 : Vec3 -> Point3d units coordinates
 fromVec3 vec =
-    Point3d.unsafe
-        { x = Math.Vector3.getX vec
-        , y = Math.Vector3.getY vec
-        , z = Math.Vector3.getZ vec
-        }
+    Point3d.unsafe (Math.Vector3.toRecord vec)
 
 
 {-| Transform a `Point3d` by a `Mat4`;

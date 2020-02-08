@@ -20,11 +20,7 @@ import Vector3d exposing (Vector3d)
 -}
 toVec3 : Vector3d units coordinates -> Vec3
 toVec3 vector =
-    let
-        { x, y, z } =
-            Vector3d.unwrap vector
-    in
-    Math.Vector3.vec3 x y z
+    Math.Vector3.fromRecord (Vector3d.unwrap vector)
 
 
 {-| Convert a `Vector3d` to a `Vec4`. The resulting `Vec4` will have a W
@@ -52,11 +48,7 @@ toVec4 vector =
 -}
 fromVec3 : Vec3 -> Vector3d units coordinates
 fromVec3 vec =
-    Vector3d.unsafe
-        { x = Math.Vector3.getX vec
-        , y = Math.Vector3.getY vec
-        , z = Math.Vector3.getZ vec
-        }
+    Vector3d.unsafe (Math.Vector3.toRecord vec)
 
 
 {-| Transform a `Vector3d` by a `Mat4`; note that

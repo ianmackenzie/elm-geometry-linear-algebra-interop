@@ -19,11 +19,7 @@ import Math.Vector4 exposing (Vec4)
 -}
 toVec3 : Direction3d coordinates -> Vec3
 toVec3 direction =
-    let
-        { x, y, z } =
-            Direction3d.unwrap direction
-    in
-    Math.Vector3.vec3 x y z
+    Math.Vector3.fromRecord (Direction3d.unwrap direction)
 
 
 {-| Convert a `Direction3d` to a `Vec4`. The resulting `Vec4` will have a W
