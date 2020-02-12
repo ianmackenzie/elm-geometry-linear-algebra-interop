@@ -1,6 +1,12 @@
 module Tests exposing (..)
 
+import Angle
+import Axis3d
+import Direction2d
+import Direction3d
 import Fuzz
+import Geometry.Expect as Expect
+import Geometry.Fuzz as Fuzz
 import Geometry.Interop.LinearAlgebra.Direction2d as Direction2d
 import Geometry.Interop.LinearAlgebra.Direction3d as Direction3d
 import Geometry.Interop.LinearAlgebra.Frame3d as Frame3d
@@ -10,14 +16,9 @@ import Geometry.Interop.LinearAlgebra.Vector2d as Vector2d
 import Geometry.Interop.LinearAlgebra.Vector3d as Vector3d
 import Math.Matrix4
 import Math.Vector3
-import OpenSolid.Axis3d as Axis3d
-import OpenSolid.Direction2d as Direction2d
-import OpenSolid.Direction3d as Direction3d
-import OpenSolid.Geometry.Expect as Expect
-import OpenSolid.Geometry.Fuzz as Fuzz
-import OpenSolid.Point3d as Point3d
-import OpenSolid.Vector3d as Vector3d
+import Point3d
 import Test exposing (Test)
+import Vector3d
 
 
 vector2dConversionRoundTrips : Test
@@ -28,7 +29,7 @@ vector2dConversionRoundTrips =
             vector
                 |> Vector2d.toVec2
                 |> Vector2d.fromVec2
-                |> Expect.vector2dWithin 1.0e-6 vector
+                |> Expect.vector2d vector
         )
 
 
@@ -40,7 +41,7 @@ vector3dConversionRoundTrips =
             vector
                 |> Vector3d.toVec3
                 |> Vector3d.fromVec3
-                |> Expect.vector3dWithin 1.0e-6 vector
+                |> Expect.vector3d vector
         )
 
 
@@ -52,7 +53,7 @@ direction2dConversionRoundTrips =
             direction
                 |> Direction2d.toVec2
                 |> Vector2d.fromVec2
-                |> Expect.vector2dWithin 1.0e-6 (Direction2d.toVector direction)
+                |> Expect.vector2d (Direction2d.toVector direction)
         )
 
 
@@ -64,7 +65,7 @@ direction3dConversionRoundTrips =
             direction
                 |> Direction3d.toVec3
                 |> Vector3d.fromVec3
-                |> Expect.vector3dWithin 1.0e-6 (Direction3d.toVector direction)
+                |> Expect.vector3d (Direction3d.toVector direction)
         )
 
 
@@ -76,7 +77,7 @@ point2dConversionRoundTrips =
             point
                 |> Point2d.toVec2
                 |> Point2d.fromVec2
-                |> Expect.point2dWithin 1.0e-6 point
+                |> Expect.point2d point
         )
 
 
@@ -88,7 +89,7 @@ point3dConversionRoundTrips =
             point
                 |> Point3d.toVec3
                 |> Point3d.fromVec3
-                |> Expect.point3dWithin 1.0e-6 point
+                |> Expect.point3d point
         )
 
 
@@ -102,7 +103,7 @@ point3dPlaceInIsTransform =
                 |> Point3d.toVec3
                 |> Math.Matrix4.transform (Frame3d.toMat4 frame)
                 |> Point3d.fromVec3
-                |> Expect.point3dWithin 1.0e-6 (Point3d.placeIn frame point)
+                |> Expect.point3d (Point3d.placeIn frame point)
         )
 
 
@@ -122,7 +123,7 @@ vector3dPlaceInIsTransform =
                 |> Vector3d.toVec3
                 |> transformVec (Frame3d.toMat4 frame)
                 |> Vector3d.fromVec3
-                |> Expect.vector3dWithin 1.0e-6 (Vector3d.placeIn frame vector)
+                |> Expect.vector3d (Vector3d.placeIn frame vector)
         )
 
 
@@ -134,7 +135,7 @@ point3dPlaceInIsTransformBy =
         (\point frame ->
             point
                 |> Point3d.transformBy (Frame3d.toMat4 frame)
-                |> Expect.point3dWithin 1.0e-6 (Point3d.placeIn frame point)
+                |> Expect.point3d (Point3d.placeIn frame point)
         )
 
 
@@ -146,7 +147,7 @@ vector3dPlaceInIsTransformBy =
         (\vector frame ->
             vector
                 |> Vector3d.transformBy (Frame3d.toMat4 frame)
-                |> Expect.vector3dWithin 1.0e-6 (Vector3d.placeIn frame vector)
+                |> Expect.vector3d (Vector3d.placeIn frame vector)
         )
 
 
@@ -158,7 +159,7 @@ point3dRelativeToIsTransformByInverse =
         (\point frame ->
             point
                 |> Point3d.transformBy (Math.Matrix4.inverseOrthonormal (Frame3d.toMat4 frame))
-                |> Expect.point3dWithin 1.0e-6 (Point3d.relativeTo frame point)
+                |> Expect.point3d (Point3d.relativeTo frame point)
         )
 
 
@@ -170,7 +171,7 @@ vector3dRelativeToIsTransformByInverse =
         (\vector frame ->
             vector
                 |> Vector3d.transformBy (Math.Matrix4.inverseOrthonormal (Frame3d.toMat4 frame))
-                |> Expect.vector3dWithin 1.0e-6 (Vector3d.relativeTo frame vector)
+                |> Expect.vector3d (Vector3d.relativeTo frame vector)
         )
 
 
@@ -178,22 +179,18 @@ point3dRotationMatchesMatrix : Test
 point3dRotationMatchesMatrix =
     Test.fuzz3 Fuzz.point3d
         Fuzz.direction3d
-        (Fuzz.floatRange -pi pi)
+        Fuzz.angle
         "Point3d rotation matches matrix version"
         (\point direction angle ->
             let
                 axis =
-                    Axis3d.with
-                        { originPoint = Point3d.origin
-                        , direction = direction
-                        }
+                    Axis3d.through Point3d.origin direction
 
                 rotationMatrix =
-                    Math.Matrix4.makeRotate angle (Direction3d.toVec3 direction)
+                    Math.Matrix4.makeRotate (Angle.inRadians angle) (Direction3d.toVec3 direction)
             in
             Point3d.rotateAround axis angle point
-                |> Expect.point3dWithin 1.0e-6
-                    (Point3d.transformBy rotationMatrix point)
+                |> Expect.point3d (Point3d.transformBy rotationMatrix point)
         )
 
 
@@ -208,6 +205,5 @@ point3dTranslationMatchesMatrix =
                     Math.Matrix4.makeTranslate (Vector3d.toVec3 vector)
             in
             Point3d.translateBy vector point
-                |> Expect.point3dWithin 1.0e-6
-                    (Point3d.transformBy translationMatrix point)
+                |> Expect.point3d (Point3d.transformBy translationMatrix point)
         )
