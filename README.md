@@ -4,13 +4,13 @@ This package supports interop between [`ianmackenzie/elm-geometry`](http://packa
 and [`elm-explorations/linear-algebra`](http://package.elm-lang.org/packages/elm-explorations/linear-algebra/latest).
 You can:
 
-  - Convert `elm-geometry` `Point2d`, `Point3d`, `Vector2d`, `Vector3d`,
-    `Direction2d` and `Direction3d` values to and from `linear-algebra` `Vec2`,
-    `Vec3` and `Vec4` values
-  - Convert `elm-geometry` `Frame3d` values to the equivalent `linear-algebra`
-    `Mat4` transformation matrices
-  - Transform `elm-geometry` `Point3d` and `Vector3d` values using
-    `linear-algebra` `Mat4` transformation matrices
+- Convert `elm-geometry` `Point2d`, `Point3d`, `Vector2d`, `Vector3d`,
+  `Direction2d` and `Direction3d` values to and from `linear-algebra` `Vec2`,
+  `Vec3` and `Vec4` values
+- Convert `elm-geometry` `Frame3d` values to the equivalent `linear-algebra`
+  `Mat4` transformation matrices
+- Transform `elm-geometry` `Point3d` and `Vector3d` values using
+  `linear-algebra` `Mat4` transformation matrices
 
 This is important for working with WebGL, since the [`elm-explorations/webgl`](http://package.elm-lang.org/packages/elm-explorations/webgl/latest)
 package requires using `linear-algebra` types when defining meshes and shaders.
@@ -57,10 +57,10 @@ if you run into a bug, if any documentation is missing/incorrect/confusing, or
 if there's a new feature that you would find useful. For general questions about
 using this package, try:
 
-  - Joining the **#geometry** channel on the [Elm Slack](http://elmlang.herokuapp.com/),
-    or sending me (**@ianmackenzie**) a message - even if you don't have any
-    particular questions right now, it would be great to know what you're hoping
-    to do with the package!
-  - Posting to the [Elm Discourse](https://discourse.elm-lang.org/) forums
+- Joining the **#geometry** channel on the [Elm Slack](http://elmlang.herokuapp.com/),
+  or sending me (**@ianmackenzie**) a message - even if you don't have any
+  particular questions right now, it would be great to know what you're hoping
+  to do with the package!
+- Posting to the [Elm Discourse](https://discourse.elm-lang.org/) forums
 
 Have fun, and don't be afraid to ask for help!
